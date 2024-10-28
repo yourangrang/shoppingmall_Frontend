@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { registerUser } from "./thunkFunctions";
 
 const initialState = {
     userData: {
@@ -10,14 +11,27 @@ const initialState = {
     },
     isAuth: false,
     isLoading: false,
-    error: ""
+    error: '',
 }
 
 const userSlice = createSlice({
-    name: "user",
+    name: 'user',
     initialState,
     reducers: {},
-    extraReducers: (builder) => {}
+    extraReducers: (builder) => {
+        builder.addCase(registerUser.pending, (state)=>{
+                state.isLoading = true;
+            })
+            .addCase(registerUser.fulfilled, (state)=>{
+                state.isLoading = false;
+            })
+            .addCase(registerUser.rejected, (state, action)=>{
+                state.isLoading = false;
+                state.error = action.payload;
+            })
+    }
 })
 
 export default userSlice.reducer;
+
+//Redux의 상태 관리를 위해 사용자 관련 상태를 다루는 슬라이스를 정의

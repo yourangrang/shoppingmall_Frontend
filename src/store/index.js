@@ -29,3 +29,6 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
+// Redux 스토어를 설정
+// persist 시키기 위해 상태를 로컬 스토리지에 저장하고 복원하도록 설정
+

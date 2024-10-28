@@ -1,12 +1,33 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
+import { registerUser } from '../../store/thunkFunctions';
+import { useDispatch } from 'react-redux';
 
 const RegisterPage = () => {
-    const { register, handleSubmit, formState: {errors}, reset} = useForm({mode:'onChange'})
-    const onSubmit = ({ email, password, name }) =>{
+    const { register,
+            handleSubmit,
+            formState: {errors},
+            reset} = useForm({mode:'onChange'})
+    
+    const dispatch = useDispatch();
+            
+    const onSubmit = ({ email, password, name }) => {
+ 
+
+        const body = {
+            email,
+            password,
+            name,
+            image: `https://via.placeholder.com/600x400?text=no+user+image`
+        }
+
+        dispatch(registerUser(body));
+
         reset();
     }
+
+
+    
     const userEmail = {
         required: "필수 입력항목입니다."
     }
