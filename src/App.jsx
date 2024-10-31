@@ -10,6 +10,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { authUser } from './store/thunkFunctions'
+import ProtectedRoutes from './components/ProtectedRoutes';
+import ProtectedPage from './pages/ProtectedPage/index';
+import NotAuthRoutes from './components/NotAuthRoutes';
 
 function Layout () {
 	return (
@@ -48,10 +51,20 @@ function App() {
 	return (
 		<Routes>
 			<Route path='/' element={<Layout />}>
+			
 				<Route index element={<LandingPage />} />
 
-				<Route path="/login" element={<LoginPage />} />
-				<Route path="/register" element={<RegisterPage />} />
+				{/* 로그인한 사용자만 갈 수 있는 경로 */}
+				<Route element={<ProtectedRoutes isAuth={isAuth} />}>
+					<Route path="protected" element={<ProtectedPage />} />
+				</Route>
+
+				{/* 로그인한 사용자는 못 가는 경로*/}
+				<Route element={<NotAuthRoutes isAuth={isAuth} />}>
+					<Route path="/login" element={<LoginPage />} />
+					<Route path="/register" element={<RegisterPage />} />
+				</Route>
+
 			</Route>
 		</Routes>
 	)
