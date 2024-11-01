@@ -17,7 +17,7 @@ const NavBar = () => {
                     <div className='flex items-center text-2xl h-14'>
                         <Link to="/">Logo</Link>
                     </div>
-                    {/* menu botton */}
+                    {/* menu button */}
                     <div className='text-2xl sm:hidden'>
                         <button onClick={handleMenu}>{menu ? "-" : "+" }</button>
                     </div>
@@ -26,9 +26,10 @@ const NavBar = () => {
                         <NavItem />
                     </div>
                 </div>
+                
                 {/* small screen nav-itmes */}
                 <div className='block sm:hidden'>
-                    {menu && <NavItem />}
+                    {menu && <NavItem mobile/>}
                 </div>
 
             </div>
