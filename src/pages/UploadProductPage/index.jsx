@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../utils/axios';
 import { useNavigate } from 'react-router-dom';
+import FileUpload from '../../components/FileUpload';
 
 
 //사이즈로 바꿀 때 밸류값 수정
-const continents = [
-  {key:1, value: "Africa"},
-  {key:2, value: "Europe"},
-  {key:3, value: "Asia"},
-  {key:4, value: "North America"},
-  {key:5, value: "South America"},
-  {key:6, value: "Australia"},
-  {key:7, value: "Antarctica"}
+const size = [
+  {key:1, value: "XS"},
+  {key:2, value: "S"},
+  {key:3, value: "M"},
+  {key:4, value: "L"},
+  {key:5, value: "XL"},
+  {key:6, value: "XXL"},
 ]
 
 const UploadProductPage = () => {
@@ -35,6 +35,13 @@ const UploadProductPage = () => {
             ...prevState,
             [name]: value
         }))
+    }
+
+    const handleImages = (newImages) => {
+      setProduct ((prevState) => ({
+          ...prevState,
+          [images]: newImages
+      }))
     }
 
     const handleSubmit = async (event) => {
@@ -63,49 +70,52 @@ const UploadProductPage = () => {
 
         <form className='mt-6' onSubmit={handleSubmit}>
 
-        <div className='m-4'>
-          <label htmlFor='title'>이름</label>
-          <input 
-          className='w-full px-4 py-2 bg-white border rounded-md'
-          name="title" id="title" onChange={handleChange} value={product.title}
-          />
-        </div>
+          <FileUpload images={product.images} onImageChange={handleImages} />
 
-        <div className='m-4'>
-          <label htmlFor='description'>설명</label>
-          <input 
-          className='w-full px-4 py-2 bg-white border rounded-md'
-          name="description" id="description" onChange={handleChange} value={product.description}
-          />
-        </div>
 
-        <div className='m-4'>
-          <label htmlFor='price'>가격</label>
-          <input 
-          className='w-full px-4 py-2 bg-white border rounded-md'
-          type="number" name="price" id="price" onChange={handleChange} value={product.price}
-          />
-        </div>
-
-        <div className='m-4'>
-          <label htmlFor='continents'>지역</label>
-          <select 
+          <div className='m-4'>
+            <label htmlFor='title'>이름</label>
+            <input 
             className='w-full px-4 py-2 bg-white border rounded-md'
-            name="continents"  id="continents" onChange={handleChange} value={product.continents}
-          >
-            {continents.map(item => (
-              <option key={item.key} value={item.key}>{item.value}</option>
-            ))}
-          </select>
-        </div>
+            name="title" id="title" onChange={handleChange} value={product.title}
+            />
+          </div>
 
-        <div className="mt-4">
-            <button
-            type='submit'
-             className='w-full px-4 py-2 text-white bg-black rounded-md hover:bg-gray-700'>
-                업로드하기
-            </button>
-        </div>
+          <div className='m-4'>
+            <label htmlFor='description'>설명</label>
+            <input 
+            className='w-full px-4 py-2 bg-white border rounded-md'
+            name="description" id="description" onChange={handleChange} value={product.description}
+            />
+          </div>
+
+          <div className='m-4'>
+            <label htmlFor='price'>가격</label>
+            <input 
+            className='w-full px-4 py-2 bg-white border rounded-md'
+            type="number" name="price" id="price" onChange={handleChange} value={product.price}
+            />
+          </div>
+
+          <div className='m-4'>
+            <label htmlFor='size'>사이즈</label>
+            <select 
+              className='w-full px-4 py-2 bg-white border rounded-md'
+              name="size"  id="size" onChange={handleChange} value={product.size}
+            >
+              {size.map(item => (
+                <option key={item.key} value={item.key}>{item.value}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mt-4">
+              <button
+              type='submit'
+              className='w-full px-4 py-2 text-white bg-black rounded-md hover:bg-gray-700'>
+                  업로드하기
+              </button>
+          </div>
 
         </form>
       </section>
