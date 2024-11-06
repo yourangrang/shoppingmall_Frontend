@@ -5,7 +5,7 @@ import axiosInstance from '../utils/axios';
 const FileUpload = ( {onImageChange, images}) => {
     
     const handleDrop = async (files) =>{
-        let formData = new FormDate();
+        let formData = new FormData();
 
         const config = {
             header: { 'content-type': 'multipart/form-data'}
@@ -19,7 +19,13 @@ const FileUpload = ( {onImageChange, images}) => {
         } catch (error) {
             console.error(error);
         }
+    }
 
+    const handleDelete = (image) => {
+        const currentIndex = images.indexOf(image);
+        let newImages = [...images];
+        newImages.splice(currentIndex, 1);
+        onImageChange(newImages);
     }
 
     return (
@@ -39,12 +45,16 @@ const FileUpload = ( {onImageChange, images}) => {
 
             <div className='flex-grow h-[300px] border flex items-center justify-center overflow-x-scroll overflow-y-hidden'>
                 {images.map(image => (
-                    <div key={image}>
+                    <div key={image} className='relative flex items-center justify-center' onClick={() => handleDelete(image) }>
                         <img 
-                            className='min-w-[300px] h-[300px]' 
+                            className='min-w-[300px] h-[300px] relative' 
                             src={`${import.meta.env.VITE_SERVER_URL}/${image}`} 
                             alt={image} 
                         />
+                        <button 
+                            className='absolute flex items-center justify-center p-2 bg-white rounded-full text-black hover:bg-gray-200'>
+                               &#10006; 
+                        </button>
                     </div>
                 ))}
             </div>

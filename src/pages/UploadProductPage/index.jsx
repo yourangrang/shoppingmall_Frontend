@@ -40,7 +40,7 @@ const UploadProductPage = () => {
     const handleImages = (newImages) => {
       setProduct ((prevState) => ({
           ...prevState,
-          [images]: newImages
+          images: newImages
       }))
     }
 
