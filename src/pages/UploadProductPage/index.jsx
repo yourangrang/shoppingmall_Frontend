@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import FileUpload from '../../components/FileUpload';
 
 
-//사이즈로 바꿀 때 밸류값 수정
+
 const size = [
   {key:1, value: "XS"},
   {key:2, value: "S"},
@@ -15,6 +15,15 @@ const size = [
   {key:6, value: "XXL"},
 ]
 
+const clothing = [
+  {key:1, value: "jacket"},
+  {key:2, value: "t-shirt"},
+  {key:3, value: "dress"},
+  {key:4, value: "pants"},
+  {key:5, value: "skirt"},
+  {key:6, value: "shoes"},
+]
+
 const UploadProductPage = () => {
 
   
@@ -22,7 +31,8 @@ const UploadProductPage = () => {
     title: '',
     description: '',
     price: 0,
-    continents: 1,
+    size: 1,
+    clothing: 1,
     images: []
   })
   
@@ -104,6 +114,18 @@ const UploadProductPage = () => {
               name="size"  id="size" onChange={handleChange} value={product.size}
             >
               {size.map(item => (
+                <option key={item.key} value={item.key}>{item.value}</option>
+              ))}
+            </select>
+          </div>
+
+          <div className='m-4'>
+            <label htmlFor='clothing'>사이즈</label>
+            <select 
+              className='w-full px-4 py-2 bg-white border rounded-md'
+              name="clothing"  id="clothing" onChange={handleChange} value={product.clothing}
+            >
+              {clothing.map(item => (
                 <option key={item.key} value={item.key}>{item.value}</option>
               ))}
             </select>
