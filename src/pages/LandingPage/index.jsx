@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import CardItem from './Sections/CardItem'
-import SearchInput from './Sections/SearchInput'
-import RadioBox from './Sections/RadioBox'
-import CheckBox from './Sections/CheckBox'
 import axiosInstance from './../../utils/axios';
+import { clothings } from './../../utils/filterData'
+import SearchInput from './../LandingPage/Sections/SearchInput';
+import CardItem from './../LandingPage/Sections/CardItem';
+import CheckBox from './../LandingPage/Sections/CheckBox';
+import RadioBox from './../LandingPage/Sections/RadioBox';
 
 const LandingPage = () => {
 
@@ -12,7 +13,7 @@ const LandingPage = () => {
     const [skip, setSkip] = useState(0);
     const [hasMore, setHasMore] = useState(false);
     const [filters, setFilters] = useState({
-        size: [],
+        clothings: [],
         price: []
     })
 
@@ -53,15 +54,37 @@ const LandingPage = () => {
         setSkip(skip + limit)
     }
 
+    const handleFilters = (newFilteredData, category) => {
+        const newFilters = { ...filters };
+        newFilters[category] = newFilteredData;
+
+        showFilteredResults(newFilters);
+        setFilters(newFilters);
+    } 
+
+    const showFilteredResults = (filters) => {
+        const body = {
+            skip: 0,
+            limit,
+            filters
+        }
+
+        fetchProducts(body);
+        setSkip(0);
+    }
+
     return (
         <section>
             <div className='text-center m-7'>
-                <h2 className='text-2xl'>여행 상품 사이트</h2>
+                <h2 className='text-2xl'>의류</h2>
             </div>
             {/* 필터 */}
             <div className='flex gap-3'>
                 <div className='w-1/2'>
-                <CheckBox />
+                <CheckBox clothings={clothings}
+                          checkedclothings={filters.clothings} 
+                          onFilters={filters => handleFilters(filters, "clothings")}
+                />
                 </div>
                 <div className='w-1/2'>
                 <RadioBox />

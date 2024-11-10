@@ -6,16 +6,16 @@ import FileUpload from '../../components/FileUpload';
 
 
 
-const size = [
-  {key:1, value: "XS"},
-  {key:2, value: "S"},
-  {key:3, value: "M"},
-  {key:4, value: "L"},
-  {key:5, value: "XL"},
-  {key:6, value: "XXL"},
-]
+// const size = [
+//   {key:1, value: "XS"},
+//   {key:2, value: "S"},
+//   {key:3, value: "M"},
+//   {key:4, value: "L"},
+//   {key:5, value: "XL"},
+//   {key:6, value: "XXL"},
+// ]
 
-const clothing = [
+const clothings = [
   {key:1, value: "jacket"},
   {key:2, value: "t-shirt"},
   {key:3, value: "dress"},
@@ -31,8 +31,8 @@ const UploadProductPage = () => {
     title: '',
     description: '',
     price: 0,
-    size: 1,
-    clothing: 1,
+    // size: 1,
+    clothings: 1,
     images: []
   })
   
@@ -107,7 +107,7 @@ const UploadProductPage = () => {
             />
           </div>
 
-          <div className='m-4'>
+          {/* <div className='m-4'>
             <label htmlFor='size'>사이즈</label>
             <select 
               className='w-full px-4 py-2 bg-white border rounded-md'
@@ -117,15 +117,15 @@ const UploadProductPage = () => {
                 <option key={item.key} value={item.key}>{item.value}</option>
               ))}
             </select>
-          </div>
+          </div> */}
 
           <div className='m-4'>
-            <label htmlFor='clothing'>사이즈</label>
+            <label htmlFor='clothings'>종류</label>
             <select 
               className='w-full px-4 py-2 bg-white border rounded-md'
-              name="clothing"  id="clothing" onChange={handleChange} value={product.clothing}
+              name="clothings"  id="clothings" onChange={handleChange} value={product.clothings}
             >
-              {clothing.map(item => (
+              {clothings.map(item => (
                 <option key={item.key} value={item.key}>{item.value}</option>
               ))}
             </select>
