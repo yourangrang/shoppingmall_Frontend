@@ -17,17 +17,20 @@ const CheckBox = ({ clothings, checkedclothings, onFilters }) => {
 
     }
     return (
-        <div className='p-2 mb-3 bg-gray-100 rounded-md'>
-            {clothings?.map(clothing => (
-                <div key={clothing._id}>
-                    <input
-                        type='checkbox'
-                        onChange={() => handleToggle(clothing._id)}
-                        checked={checkedclothings.indexOf(clothing._id) === -1 ? false : true}
-                    />{" "}
-                    <label>{clothing.name}</label>
-                </div>
-            ))}
+        <div>
+            <h2 className='font-bold '>제품 타입</h2>
+            <div className='p-2 bg-gray-100 flex flex-wrap justify-center h-20 '>
+                {clothings?.map(clothing => (
+                    <div key={clothing._id} className=' w-1/3 p-1'>
+                        <input
+                            type='checkbox'
+                            onChange={() => handleToggle(clothing._id)}
+                            checked={checkedclothings.indexOf(clothing._id) === -1 ? false : true}
+                        />{" "}
+                        <label>{clothing.name}</label>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

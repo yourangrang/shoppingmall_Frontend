@@ -9,6 +9,7 @@ import RadioBox from './../LandingPage/Sections/RadioBox';
 const LandingPage = () => {
 
     const limit = 4
+    const [searchTerm, setSearchTerm] = useState('');
     const [products, setProducts] = useState([]);
     const [skip, setSkip] = useState(0);
     const [hasMore, setHasMore] = useState(false);
@@ -48,7 +49,8 @@ const LandingPage = () => {
             skip: skip + limit,
             limit,
             loadMore: true,
-            filters
+            filters,
+            searchTerm
         }
         fetchProducts(body);
         setSkip(skip + limit)
@@ -82,17 +84,37 @@ const LandingPage = () => {
         const body = {
             skip: 0,
             limit,
-            filters
+            filters,
+            searchTerm
         }
 
         fetchProducts(body);
         setSkip(0);
     }
 
+    const handleSearchTerm = (event) => {
+        const body = {
+            skip: 0,
+            limit,
+            filters,
+            searchTerm: event.target.value
+        }
+        setSkip(0);
+        setSearchTerm(event.target.value);
+        fetchProducts(body);
+    }
+
     return (
         <section>
             <div className='text-center m-7'>
-                <h2 className='text-2xl'>의류</h2>
+                <h2 className='text-2xl font-bold'>의류</h2>
+            </div>
+
+            {/* 서치 */ }
+            <div className='flex justify-end mb-3'>
+                <SearchInput searchTerm={searchTerm}
+                             onSearch={handleSearchTerm}            
+                />
             </div>
             {/* 필터 */}
             <div className='flex gap-3'>
@@ -108,11 +130,6 @@ const LandingPage = () => {
                           onFilters={filters => handleFilters(filters, "price")}
                 />
                 </div>
-            </div>
-
-            {/* 서치 */ }
-            <div className='flex justify-end'>
-                <SearchInput />
             </div>
             {/* 카드 */}
             <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>

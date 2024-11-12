@@ -16,12 +16,12 @@ import FileUpload from '../../components/FileUpload';
 // ]
 
 const clothings = [
-  {key:1, value: "jacket"},
-  {key:2, value: "t-shirt"},
-  {key:3, value: "dress"},
-  {key:4, value: "pants"},
-  {key:5, value: "skirt"},
-  {key:6, value: "shoes"},
+  {key:1, value: "자켓"},
+  {key:2, value: "상의"},
+  {key:3, value: "드레스"},
+  {key:4, value: "팬츠"},
+  {key:5, value: "스커트"},
+  {key:6, value: "신발"},
 ]
 
 const UploadProductPage = () => {

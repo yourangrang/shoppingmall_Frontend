@@ -1,27 +1,27 @@
 const clothings = [
     {
         "_id": 1,
-        "name": "jacket"
+        "name": "자켓"
     },
     {
         "_id": 2,
-        "name": "t-shirt"
+        "name": "상의"
     },
     {
         "_id": 3,
-        "name": "dress"
+        "name": "드레스"
     },
     {
         "_id": 4,
-        "name": "pants"
+        "name": "팬츠"
     },
     {
         "_id": 5,
-        "name": "skirt"
+        "name": "스커트"
     },
     {
         "_id": 6,
-        "name": "shoes"
+        "name": "신발"
     },
 ]
 
@@ -33,28 +33,28 @@ const prices = [
     },
     {   
         "_id": 1,
-        "name": "0 ~ 199원",
-        "array": [0, 199]
+        "name": "만원이하",
+        "array": [0, 9900]
     },
     {
         "_id": 2,
-        "name": "200 ~ 249원",
-        "array": [200, 249]
+        "name": "1만원대",
+        "array": [10000, 19900]
     },
     {
         "_id": 3,
-        "name": "250 ~ 279원",
-        "array": [250, 279]
+        "name": "2만원대",
+        "array": [20000, 29900]
     },
     {
         "_id": 4,
-        "name": "280 ~ 299원",
-        "array": [280, 299]
+        "name": "3만원대",
+        "array": [30000, 39900]
     },
     {
         "_id": 5,
-        "name": "300원 이상",
-        "array": [300, 1500000]
+        "name": "4만원 이상",
+        "array": [40000, 1500000]
     }
 ]
 
