@@ -85,5 +85,30 @@ export const addToCart = createAsyncThunk(
     }
 ) //카트
 
+export const getCartItems = createAsyncThunk(
+    "user/getCartItems",
+    async ({ cartItemIds, userCart }, thunkAPI) => {
+        try {
+            const response = await axiosInstance.get(
+                `/products/${cartItemIds}?type=array`);
+
+
+            userCart.forEach(cartItem => {
+                response.data.forEach((productDetail, index) => {
+                    if (cartItem.id === productDetail._id) {
+                        response.data[index].quantity = cartItem.quantity;
+                    }
+                })
+            })
+            
+
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return thunkAPI.rejectWithValue(error.response.data || error.message);
+        }
+    }
+) //카트아이템 가져오기
+
 // createAsyncThunk를 사용하여 registerUser라는 비동기 함수를 정의 
 // 사용자 등록 요청을 비동기로 처리하는 역할
