@@ -20,7 +20,7 @@ import UploadProductPage from './pages/UploadProductPage'
 
 function Layout () {
 	return (
-		<div className='flex flex-col h-screen justify-between' >
+		<div className='flex flex-col h-screen justify-between bg-[#FAF9F8] ' >
 
 			<ToastContainer
 				position='bottom-right'

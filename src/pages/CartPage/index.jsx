@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getCartItems } from '../../store/thunkFunctions';
+import CartTable from './Sections/CartTable';
 
 const CartPage = () => {
 
@@ -42,21 +43,33 @@ const CartPage = () => {
 
     }
 
+    const handleRemoveItem = () => {
+
+    }
+
     return (
         <section>
-            <div className='text-center m-7'>
-                <h2 className='text-2xl'>나의 장바구니</h2>
+            <div className='text-center m-10'>
+                <h2 className='text-2xl '>쇼핑백</h2>
+                <p className='text-xs pt-5'>회원 혜택:3만원 이상 무료배송 & 첫구매 10% 할인</p>
             </div>
 
             {cartDetail?.length > 0 ?
-            <>
-                <div>
-                    <p><span>합계:{total} </span> 원</p>
-                    <button className='px-4 py-2 mt-5 text-white bg-black rounded-md hover:bg-gray-500'>
+            <div className='flex gap-5'>
+
+                <CartTable products={cartDetail} onRemoveItem={handleRemoveItem} className='w-3/5 ' />
+                <div className='w-2/5 mb-5 text-right bg-white p-5'>
+                    <p className='text-xs text-left pb-3'>
+                        귀하가 결제 단계에 도달할 때까지 가격 및 배송료는 확인되지 않습니다.
+                        30일의 반품 가능 기간, 반품 수수료 및 미수취시 발생하는 추가 배송 요금 읽어보기
+                        <span className='font-bold block text-right'>반품 및 환불 </span>
+                    </p>
+                    <p className='border-t-2 border-black pt-3 font-bold'>합계: <span className='font-medium text-2xl'>{total}</span> 원</p>
+                    <button className='w-full py-2 mt-3 text-white bg-black  hover:bg-gray-500'>
                         결제하기
                     </button>
                 </div>
-            </>
+            </div>
             :
             <p>장바구니가 비었습니다.</p>
             }
