@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getCartItems } from '../../store/thunkFunctions';
+import { getCartItems, removeCartItem } from '../../store/thunkFunctions';
 import CartTable from './Sections/CartTable';
 
 const CartPage = () => {
-
     const userData = useSelector(state => state.user?.userData);
     const cartDetail = useSelector(state => state.user?.cartDetail);
-
     const dispatch = useDispatch();
-
-    const [ total, setTotal ] = useState(0);
-
+    const [total, setTotal] = useState(0);
     useEffect(() => {
         let cartItemIds = []
-        
-       if (userData?.cart && userData.cart.length > 0) {
+
+        if (userData?.cart && userData.cart.length > 0) {
         userData.cart.forEach(item => {
             cartItemIds.push(item.id);
         })
@@ -26,26 +22,28 @@ const CartPage = () => {
         }
 
         dispatch(getCartItems(body))
-       }
+        }
 
     }, [dispatch, userData])
 
-    //카트디테일이 변할때마다 총합계 구하기
-    useEffect(()=> {
+    useEffect(() => {
+
         calculateTotal(cartDetail)
+
     }, [cartDetail])
 
 
     const calculateTotal = (cartItems) => {
         let total = 0;
         cartItems.map(item => total += item.price * item.quantity)
-        setTotal(total)
-
+        setTotal(total);
     }
 
-    const handleRemoveItem = () => {
-
+    const handleRemoveCartItem = (productId) => {
+        dispatch(removeCartItem(productId));
     }
+    
+
 
     return (
         <section>
@@ -57,12 +55,12 @@ const CartPage = () => {
             {cartDetail?.length > 0 ?
             <div className='flex gap-5'>
 
-                <CartTable products={cartDetail} onRemoveItem={handleRemoveItem} className='w-3/5 ' />
-                <div className='w-2/5 mb-5 text-right bg-white p-5'>
+                <CartTable products={cartDetail} onRemoveItem={handleRemoveCartItem} className='w-3/5 ' />
+                <div className='w-2/5 mb-5 text-right bg-white p-4'>
                     <p className='text-xs text-left pb-3'>
                         귀하가 결제 단계에 도달할 때까지 가격 및 배송료는 확인되지 않습니다.
                         30일의 반품 가능 기간, 반품 수수료 및 미수취시 발생하는 추가 배송 요금 읽어보기
-                        <span className='font-bold block text-right'>반품 및 환불 </span>
+                        <span className='font-bold text-left'> 반품 및 환불 </span>
                     </p>
                     <p className='border-t-2 border-black pt-3 font-bold'>합계: <span className='font-medium text-2xl'>{total}</span> 원</p>
                     <button className='w-full py-2 mt-3 text-white bg-black  hover:bg-gray-500'>

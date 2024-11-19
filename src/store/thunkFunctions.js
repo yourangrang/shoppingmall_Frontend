@@ -110,5 +110,32 @@ export const getCartItems = createAsyncThunk(
     }
 ) //카트아이템 가져오기
 
+
+
+export const removeCartItem = createAsyncThunk(
+    "user/removeCartItem",
+    async (productId, thunkAPI) => {
+        try {
+            const response = await axiosInstance.delete(
+                `/users/cart?productId=${productId}`
+            );
+
+            response.data.cart.forEach(cartItem => {
+                response.data.productInfo.forEach((productDetail, index) => {
+                    if (cartItem.id === productDetail._id) {
+                        response.data.productInfo[index].quantity = cartItem.quantity;
+                    }
+                })
+            })
+
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return thunkAPI.rejectWithValue(error.response.data || error.message);
+        }
+    }
+)
+ //카트아이템 제거하기
+
 // createAsyncThunk를 사용하여 registerUser라는 비동기 함수를 정의 
 // 사용자 등록 요청을 비동기로 처리하는 역할
