@@ -18,6 +18,7 @@ const routes = [
 
 const NavItem = ({ mobile }) => {
   const isAuth = useSelector(state => state.user?.isAuth);
+  const cart = useSelector(state => state.user?.userData?.cart);
   const dispatch = useDispatch();
   const navigate  =  useNavigate();
   
@@ -25,6 +26,7 @@ const NavItem = ({ mobile }) => {
     dispatch(logoutUser())
     navigate('/login');
   }
+  
 
   return (
     <ul className={`text-md justify-center w-full flex gap-4 ${mobile && "flex-col bg-gray-900 h-full"} items-center`}>
@@ -41,7 +43,7 @@ const NavItem = ({ mobile }) => {
               {icon}
               <span className='absolute top-0 inline-flex items-center justify-center w-4 h-4 text-xs font-blod tetx-white
                bg-red-500 border-2 border-white rounded-full -right-3'>
-                {3}
+                {cart?.length}
               </span>
             </Link>
           </li>

@@ -134,8 +134,24 @@ export const removeCartItem = createAsyncThunk(
             return thunkAPI.rejectWithValue(error.response.data || error.message);
         }
     }
-)
- //카트아이템 제거하기
+) //카트아이템 제거하기
+
+export const payProducts = createAsyncThunk(
+    "user/payProducts",
+    async (body, thunkAPI) => {
+        try {
+            const response = await axiosInstance.post(
+                `/users/payment`,
+                body
+            );
+
+            return response.data;
+        } catch (error) {
+            console.log(error);
+            return thunkAPI.rejectWithValue(error.response.data || error.message);
+        }
+    }
+) // 결제하기
 
 // createAsyncThunk를 사용하여 registerUser라는 비동기 함수를 정의 
 // 사용자 등록 요청을 비동기로 처리하는 역할
