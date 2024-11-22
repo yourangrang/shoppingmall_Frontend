@@ -132,7 +132,7 @@ const LandingPage = () => {
                 </div>
             </div>
             {/* 카드 */}
-            <div className='grid grid-cols-2 sm:grid-cols-4 gap-4'>
+            <div className='grid grid-cols-2 sm:grid-cols-4 gap-1'>
                 {products.map(product => 
                     <CardItem product={product} key={product._id} />
                 )}
