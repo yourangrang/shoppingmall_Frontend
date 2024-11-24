@@ -67,7 +67,7 @@ const CartPage = () => {
                     </p>
                     <p className='border-t-2 border-black pt-3 font-bold'>합계: <span className='font-medium text-2xl'>{total}</span> 원</p>
                     <button
-                    className='px-4 py-2 mt-5 text-white bg-black rounded-md hover:bg-gray-500'
+                    className='px-4 py-2 mt-5 text-white bg-black  hover:bg-gray-500'
                     onClick={handlePaymentClick}
                     >
                     결제하기

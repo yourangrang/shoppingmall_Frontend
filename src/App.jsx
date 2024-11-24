@@ -20,7 +20,7 @@ import UploadProductPage from './pages/UploadProductPage'
 
 function Layout () {
 	return (
-		<div className='flex flex-col h-screen justify-between bg-[#FAF9F8] ' >
+		<div className='flex flex-col h-screen justify-between ' >
 
 			<ToastContainer
 				position='bottom-right'
@@ -30,7 +30,7 @@ function Layout () {
 			/>
 
 			<NavBar />
-			<main className='mb-auto w-10/12 max-w-4xl mx-auto'>
+			<main className='mb-auto w-10/12 max-w-5xl mx-auto  '>
 				<Outlet />
 			</main>
 			<Footer />

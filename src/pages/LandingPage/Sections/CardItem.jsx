@@ -16,8 +16,8 @@ const CardItem = ({ product }) => {
 
     return (
         <div>
+            <ImageSlider images={product.images} />
             <Link to={`/product/${product._id}`} >
-                <ImageSlider images={product.images} />
                 <p className='pl-3 font-bold'>{product.title}</p>
                 <p className='pl-3 text-[14px]'>￦{product.price}</p>
                 <p className='pl-3 text-xs font-bold text-gray-400'>{clothItem ? clothItem.value : 'Unknown'}</p>

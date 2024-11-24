@@ -8,7 +8,7 @@ import RadioBox from './../LandingPage/Sections/RadioBox';
 
 const LandingPage = () => {
 
-    const limit = 4
+    const limit = 8
     const [searchTerm, setSearchTerm] = useState('');
     const [products, setProducts] = useState([]);
     const [skip, setSkip] = useState(0);
@@ -142,7 +142,7 @@ const LandingPage = () => {
                 <div className='flex justify-center mt-5'>
                     <button
                      onClick={handleLoadMore}
-                     className='px-4 py-2 mt-5 text-white bg-black rounded-md hover:bg-gray-500'>
+                     className='px-4 py-2 mb-5 text-white bg-black rounded-md hover:bg-gray-500'>
                         더 보기
                     </button>
                 </div>

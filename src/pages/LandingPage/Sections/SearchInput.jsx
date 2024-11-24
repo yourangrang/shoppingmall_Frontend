@@ -8,7 +8,7 @@ const SearchInput = ({onSearch, searchTerm}) => {
         <div className='flex'>
             <IoSearchOutline className='mt-3 text-2xl '/>
             <input 
-                className='p-2 border-b-2 border-black focus:outline-none '
+                className='p-2 border-b-2 border-black focus:outline-none bg-transparent'
                 type="text" 
                 placeholder='검색어를 입력하세요'
                 onChange={onSearch}

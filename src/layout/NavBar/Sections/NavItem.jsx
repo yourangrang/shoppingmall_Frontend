@@ -34,11 +34,11 @@ const NavItem = ({ mobile }) => {
         if (isAuth !== auth) return null; 
 
         if ( name === '로그아웃') {
-          return <li key={name} className='py-2 text-center border-b-4 cursor-pointer'>
+          return <li key={name} className='py-2 text-centercursor-pointer'>
             <Link onClick={handleLogout}>{name}</Link>
           </li>
         } else if (icon) {
-          return <li className='relative py-2 text-center border-b-4 cursor-pointer' key={name}>
+          return <li className='relative py-2 text-center  cursor-pointer' key={name}>
             <Link to={to}>
               {icon}
               <span className='absolute top-0 inline-flex items-center justify-center w-4 h-4 text-xs font-blod tetx-white
@@ -48,7 +48,7 @@ const NavItem = ({ mobile }) => {
             </Link>
           </li>
         } else {
-          return <li key={name} className='py-2 text-center border-b-4 cursor-pointer'>
+          return <li key={name} className='py-2 text-center  cursor-pointer'>
             <Link to={to}>{name}</Link>
           </li>
         }

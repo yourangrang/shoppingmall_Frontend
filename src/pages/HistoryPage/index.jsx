@@ -37,26 +37,27 @@ const HistoryPage = () => {
             <div className='w-full text-sm text-left text-gray-500'>
                 <div>
                     {Object.keys(groupedHistory).map(dateTime => (
-                        <div key={dateTime} className='border-2 rounded-lg mb-10 p-3 border-black'>
+                        <div key={dateTime} className='border-2 rounded-lg mb-10 px-4 py-2 border-black'>
                                 <div className="font-semibold text-lg text-gray-700 ">
                                     {dateTime}
                                 </div>
                                 {/* 해당 날짜와 시간의 주문 내역들 출력 */}
                                 {groupedHistory[dateTime].items.map(item => (
-                                    <ul key={item.paymentId} className='border-b flex p-4 relative'>
+                                    <ul key={item.paymentId} className='border-b flex p-2 relative'>
                                         <li>    
-                                            {item.images && item.images.length > 0 && item.images.map((image, index) => (
-                                                <img 
-                                                    key={index} 
-                                                    src={`${import.meta.env.VITE_SERVER_URL}/${image}`} // 이미지 경로 수정 필요
-                                                    alt={`상품 이미지 ${index + 1}`}
-                                                    className="w-20 h-20 object-cover"
-                                                />
-                                            ))}
-                                        </li>
-                                        <li className='absolute left-28  top-6 font-bold text-black'>{item.name}</li>
-                                        <li className='absolute left-28  top-11'>{item.price} 원</li>
-                                        <li className='absolute left-28  top-16'>{item.quantity} 개</li>
+                                        {/* 첫 번째 이미지만 출력 */}
+                                        {item.images && item.images.length > 0 && (
+                                            <img 
+                                                key={0} // 첫 번째 이미지만 가져오므로 고유값은 0
+                                                src={`${import.meta.env.VITE_SERVER_URL}/${item.images[0]}`} // 첫 번째 이미지 URL 사용
+                                                alt={`상품 이미지 1`} // 첫 번째 이미지 설명
+                                                className="w-20 h-20 object-cover"
+                                            />
+                                        )}
+                                    </li>
+                                        <li className='absolute left-28  top-4 font-bold text-black'>{item.name}</li>
+                                        <li className='absolute left-28  top-9'>{item.price} 원</li>
+                                        <li className='absolute left-28  top-14'>{item.quantity} 개</li>
                                     </ul>
                                 ))}
                                 <div className="text-right font-bold pt-3 text-black">
