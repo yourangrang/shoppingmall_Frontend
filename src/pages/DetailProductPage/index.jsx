@@ -25,10 +25,6 @@ const DetailProductPage = () => {
 
     return (
         <section>
-            <div className='text-center'>
-                <h1 className='p-4 text-2xl'>{product.title}</h1>
-            </div>
-
             <div className='flex gap-4'>
                 <div className='w-1/2'>
                     {/* ProductImage */}
@@ -36,6 +32,9 @@ const DetailProductPage = () => {
                 </div>
                 <div className='w-1/2'>
                     {/* ProductInfo */}
+                  <div className='text-center p-4 text-2xl'>
+                      {product.title}
+                  </div>
                     <ProductInfo product={product} />
                 </div>
             </div>

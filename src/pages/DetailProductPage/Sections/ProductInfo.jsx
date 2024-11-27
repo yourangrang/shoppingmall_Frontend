@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch,  } from 'react-redux';
 import { addToCart } from '../../../store/thunkFunctions';
 
 const size = [
@@ -33,13 +33,12 @@ const ProductInfo = ({product}) => {
       };
 
     return (
-        <div>
-            <p className='text-xl text-bold'>상품정보</p>
+        <div className='ml-2'>
             <ul>
-                <li><span className='font-semibold text-gray-900'>￦</span>{product.price}</li>
-                <li><span className='font-semibold text-gray-900'>판매 수</span>{product.sold} 개</li>
-                <li><span className='font-semibold text-gray-900'>설명:</span>{product.description}</li>
-                <div className='mt-4'>
+                <li className='text-xl font-bold pt-4'><span>￦</span>{product.price}</li>
+                <li className='mt-8'><span className='font-semibold text-gray-900'>판매 수 </span>{product.sold}개</li>
+                <li className='mt-4 text-sm'><span className='text-[16px] block font-bold pb-2'>설명 </span>{product.description}</li>
+                <div className='mt-10'>
                     <label htmlFor='size'>사이즈</label>
                     <select 
                     className='w-full px-4 py-2 bg-white border rounded-md'

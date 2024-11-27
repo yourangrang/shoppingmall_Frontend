@@ -1,12 +1,11 @@
 import React from 'react'
 
-import { AiOutlineSmile } from "react-icons/ai";
-
+import { MdOutlineMail } from "react-icons/md";
 
 const Footer = () => {
     return (
-        <div className='flex h-20 text-lg justify-center items-center'>
-            All rights reserved. <AiOutlineSmile />
+        <div className='flex text-lg justify-center items-center  text-black p-5'>
+            <MdOutlineMail className='text-2xl mr-2'/>rang3176@gmail.com 
         </div>
     )
 }

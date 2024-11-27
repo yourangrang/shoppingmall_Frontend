@@ -92,8 +92,8 @@ const userSlice = createSlice({
             .addCase(addToCart.rejected, (state, action)=>{
                 state.isLoading = false;
                 state.error = action.payload;
-                toast.error(action.payload);
-            }) // cart
+                toast.error('로그인해주세요');  
+            }) // cart  //토스트에action.payload, 
 
 
             .addCase(getCartItems.pending, (state)=>{

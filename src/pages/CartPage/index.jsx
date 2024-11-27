@@ -56,10 +56,10 @@ const CartPage = () => {
             </div>
 
             {cartDetail?.length > 0 ?
-            <div className='flex gap-5'>
+            <div className='sm:flex gap-5'>
 
-                <CartTable products={cartDetail} onRemoveItem={handleRemoveCartItem} className='w-3/5 ' />
-                <div className='w-2/5 mb-5 text-right bg-white p-4'>
+                <CartTable products={cartDetail} onRemoveItem={handleRemoveCartItem} className='w-3/5  ' />
+                <div className='w-full  sm:w-2/5 mb-5 bg-white p-4 sm:text-right sm:h-[250px] '>
                     <p className='text-xs text-left pb-3'>
                         귀하가 결제 단계에 도달할 때까지 가격 및 배송료는 확인되지 않습니다.
                         30일의 반품 가능 기간, 반품 수수료 및 미수취시 발생하는 추가 배송 요금 읽어보기

@@ -29,7 +29,7 @@ const NavItem = ({ mobile }) => {
   
 
   return (
-    <ul className={`text-md justify-center w-full flex gap-4 ${mobile && "flex-col bg-gray-900 h-full"} items-center`}>
+    <ul className={`text-md justify-center w-full flex gap-4  items-center ${mobile && "flex-col  bg-[#f0f0f0;]  h-full "} `}>
       {routes.map(({ to, name, auth, icon }) => {
         if (isAuth !== auth) return null; 
 
@@ -42,7 +42,7 @@ const NavItem = ({ mobile }) => {
             <Link to={to}>
               {icon}
               <span className='absolute top-0 inline-flex items-center justify-center w-4 h-4 text-xs font-blod tetx-white
-               bg-red-500 border-2 border-white rounded-full -right-3'>
+               bg-red-500 border-2 border-black rounded-full -right-1'>
                 {cart?.length}
               </span>
             </Link>

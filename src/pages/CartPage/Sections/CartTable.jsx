@@ -29,14 +29,14 @@ const CartTable = ({ products, onRemoveItem }) => {
                     <img className='w-[100px]' alt='product' 
                          src={renderCartImage(product.images)} />
                 </td>
-                <td className='font-bold text-center '>
+                <td className='text-xs sm:text-[16px] font-bold text-center '>
                     {product.title}
                 </td>
                 <td className='text-center'>
                     {product.quantity} 개
                 </td>
-                <td>
-                 사이즈 {sizestringItem ? sizestringItem.value : 'Unknown'}
+                <td >
+                  {sizestringItem ? sizestringItem.value : 'Unknown'} size
                 </td>
                 <td>
                     {product.price} 원
