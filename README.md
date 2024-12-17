@@ -1,8 +1,13 @@
-# React + Vite
+react-vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+node.js
 
-Currently, two official plugins are available:
+mongoDB
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+redux
+
+Express JS 
+
+를 사용해 만든 fullstack 쇼핑몰 사이트로로
+
+heroku 를 이용해 배포 했습니다.
